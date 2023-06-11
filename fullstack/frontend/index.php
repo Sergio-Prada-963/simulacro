@@ -58,8 +58,9 @@
             <th scope="col">Nombre Cliente</th>
             <th scope="col">Telefono</th>
             <th scope="col">Direccion</th>
+            <th scope="col">Correo</th>
             <th scope="col">Tipo de Cliente</th>
-            <th scope="col">Detalles</th>
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -69,8 +70,9 @@
             <tr>
               <td><?= $value['id_cliente'] ?></td>
               <td><?= $value['nombreCliente'] ?></td>
-              <td><?= $value['telefono'] ?></td>
+              <td><?= $value['telefonoCliente'] ?></td>
               <td><?= $value['direccion'] ?></td>
+              <td><?= $value['correoCliente'] ?></td>
               <td><?= $value['tipoCliente'] ?></td>
               <td class="row justify-content-center gap-2 ">
                 <a class="btn btn-danger" href="../backend/acciones/clientes/borrarCliente.php?id=<?= $value['id_cliente'] ?>&req=delete">BORRAR</a>
@@ -90,16 +92,36 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Nuevo Cliente...</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
+          <div class="modal-body" style="background-color: rgb(231, 253, 246);">
+            <form class="col d-flex flex-wrap" action="../backend/acciones/clientes/registrarCliente.php" method="post">
+              <div class="mb-1 col-12">
+                <label class="form-label">Nombre del cliente: </label>
+                <input type="text" placeholder="Ingrese el nombre del cliente" class="form-control" name="nombreCliente"> 
+              </div>
+              <div class="mb-1 col-12">
+                <label>Telefono del cliente: </label>
+                <input type="number" placeholder="Ingrese el telefono del cliente" class="form-control" name="telefonoCliente"> 
+              </div>
+              <div class="mb-1 col-12">
+                <label>Direccion del cliente: </label>
+                <input type="text" placeholder="Ingrese la direccion del cliente" class="form-control" name="direccion"> 
+              </div>
+              <div class="mb-1 col-12">
+                <label>Correo del cliente: </label>
+                <input type="email" placeholder="Ingrese el correo del cliente" class="form-control" name="correoCliente"> 
+              </div>
+              <div class="mb-1 col-12">
+                <label>Tipo de cliente: </label>
+                <input type="text" placeholder="Ingrese el tipo del cliente" class="form-control" name="tipoCliente"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <input type="submit" class="btn btn-primary" name="guardar" value="Guardar">
+              </div>
+            </form> 
         </div>
       </div>
     </div>

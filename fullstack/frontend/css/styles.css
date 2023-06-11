@@ -1,8 +1,9 @@
-body{
+/* body{
     overflow: hidden;
     display: flex;
     flex-direction: row;
     background-color: #FFE9D4!important;
+    height: 100vh!important;
 }
 .barraIsquierda{
     display: flex;
@@ -57,4 +58,4 @@ i{
     display: flex;
     flex-direction: row;
     gap: 10rem;
-}
+} */

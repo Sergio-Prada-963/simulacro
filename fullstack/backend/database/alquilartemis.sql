@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 09, 2023 at 07:57 AM
+-- Generation Time: Jun 09, 2023 at 10:46 AM
 -- Server version: 8.0.33-0ubuntu0.22.04.2
 -- PHP Version: 8.1.2-1ubuntu2.11
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clientes` (
   `id_cliente` int NOT NULL,
-  `nombreCliente` varchar(60) NOT NULL,
+  `nombreCliente` varchar(60) COLLATE utf32_spanish2_ci NOT NULL,
   `telefono` int NOT NULL,
-  `direccion` text NOT NULL,
-  `tipoCliente` varchar(60) NOT NULL
-) ;
+  `direccion` text COLLATE utf32_spanish2_ci NOT NULL,
+  `tipoCliente` varchar(60) COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -44,10 +44,17 @@ CREATE TABLE `clientes` (
 CREATE TABLE `cotizacion` (
   `id_cotizacion` int NOT NULL,
   `fecha` date NOT NULL,
-  `empleado` varchar(50) NOT NULL,
-  `detalleCot` text NOT NULL,
-  `duracion` text NOT NULL
-) ;
+  `empleado` varchar(50) COLLATE utf32_spanish2_ci NOT NULL,
+  `detalleCot` text COLLATE utf32_spanish2_ci NOT NULL,
+  `duracion` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
+
+--
+-- Dumping data for table `cotizacion`
+--
+
+INSERT INTO `cotizacion` (`id_cotizacion`, `fecha`, `empleado`, `detalleCot`, `duracion`) VALUES
+(1, '2023-06-08', 'juan', 'compro un martillo para poner cuadros en su casa', '3dias');
 
 -- --------------------------------------------------------
 
@@ -57,10 +64,17 @@ CREATE TABLE `cotizacion` (
 
 CREATE TABLE `empleados` (
   `id_empleado` int NOT NULL,
-  `nombre` varchar(100) NOT NULL,
+  `nombre` varchar(100) COLLATE utf32_spanish2_ci NOT NULL,
   `edad` int NOT NULL,
-  `cargo` varchar(50) NOT NULL
-) ;
+  `cargo` varchar(50) COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
+
+--
+-- Dumping data for table `empleados`
+--
+
+INSERT INTO `empleados` (`id_empleado`, `nombre`, `edad`, `cargo`) VALUES
+(1, 'andrea', 20, 'cajera');
 
 -- --------------------------------------------------------
 
@@ -70,10 +84,17 @@ CREATE TABLE `empleados` (
 
 CREATE TABLE `productos` (
   `id_productos` int NOT NULL,
-  `nombreProducto` varchar(100) NOT NULL,
+  `nombreProducto` varchar(100) COLLATE utf32_spanish2_ci NOT NULL,
   `costoDia` int NOT NULL,
-  `descripcion` text NOT NULL
-) ;
+  `descripcion` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id_productos`, `nombreProducto`, `costoDia`, `descripcion`) VALUES
+(1, 'martillo', 500000, 'para martillar');
 
 -- --------------------------------------------------------
 
@@ -83,10 +104,10 @@ CREATE TABLE `productos` (
 
 CREATE TABLE `users` (
   `id_usuario` int NOT NULL,
-  `correo` varchar(100) NOT NULL,
+  `correo` varchar(100) COLLATE utf32_spanish2_ci NOT NULL,
   `contraseña` int NOT NULL,
-  `userName` text NOT NULL
-) ;
+  `userName` text COLLATE utf32_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
 
 --
 -- Indexes for dumped tables
@@ -130,25 +151,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cotizacion`
 --
 ALTER TABLE `cotizacion`
-  MODIFY `id_cotizacion` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cotizacion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empleado` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_productos` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_productos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
