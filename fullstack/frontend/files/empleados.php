@@ -1,20 +1,11 @@
-<?php 
-    //Errores
-    ini_set("display_errors", 1);
-    ini_set("display_startup_errors", 1);
-    error_reporting(E_ALL);
 
-    require_once('../backend/config/empleados.php');
-    $data = new Cofig();
-    $all = $data-> obtainAll();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Alquilartemis</title>
@@ -64,25 +55,9 @@
             <th scope="col" class="row col-12" >Opciones</th>
           </tr>
         </thead>
-        <tbody>
-            <?php 
-                foreach($all as $key => $value){
-            ?>
-            <tr>
-              <td><?= $value['id_empleado'] ?></td>
-              <td><?= $value['nombre'] ?></td>
-              <td><?= $value['edad'] ?></td>
-              <td><?= $value['telefono'] ?></td>
-              <td><?= $value['email'] ?></td>
-              <td><?= $value['fechaIngreso'] ?></td>
-              <td><?= $value['cargo'] ?></td>
-              <td class="row gap-2 col-12">
-                <a class="btn btn-danger" href="../backend/acciones/empleados/borrarEmpleado.php?id=<?= $value['id_empleado'] ?>&req=delete">BORRAR</a>
-                <a class="btn btn-primary" href="../backend/acciones/empleados/editarEmpleado.php?id=<?=$value['id_empleado']?>">Editar</a>
-              </td>
-            </tr>
-            <?php  } ?>
-          
+        <tbody id="tabla">
+            
+
         </tbody>
         </table>
     </section>
@@ -132,5 +107,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
+  <script src="../acciones/empleados/getEmpleados.js" type="module"></script>
+  </body>
 </html>

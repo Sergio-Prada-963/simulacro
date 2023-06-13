@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-require_once("../config/Conectar.php");
+require_once("../config/conectar.php");
 require_once("../models/cotizaciones.php");
 
 

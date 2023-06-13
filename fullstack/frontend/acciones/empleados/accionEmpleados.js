@@ -1,7 +1,7 @@
-const ulr = "http://localhost/xampp/var/www/html/php/simulacro/fullstack/backend/controles/cotizacion.php?op=GetAll"
+const ulr = "http://localhost/SkylAb-145/Proyects/simulacro/fullstack/backend/controles/empleado.php?op=GetAll"
 
 
-export const getCotizacion = async () =>{
+export const getEmpleado = async () =>{
     try{
         const result = await fetch (ulr);
         const datosUsuarios = await result.json();
@@ -13,7 +13,7 @@ export const getCotizacion = async () =>{
     }
 }
 
-export const newCotizacion = async (registro) =>{
+export const newEmpleado = async (registro) =>{
     console.log(registro);
     try {
         await fetch(ulr,{
@@ -32,9 +32,9 @@ export const newCotizacion = async (registro) =>{
 }
 
 
-export const deleteCotizacion = async id_cotizacion => {
+export const deleteEmpleado = async id_empleado => {
     try {
-       await fetch (`${ulr}/${id_cotizacion}`,{
+       await fetch (`${ulr}/${id_empleado}`,{
             method: 'DELETE'
        })
         
@@ -46,9 +46,9 @@ export const deleteCotizacion = async id_cotizacion => {
 
 }
 
-export const actualizarCotizacion = async (data) => {
+export const actualizarEmpleado = async (data) => {
     try {
-      await fetch(ulrCotizacion + '/' + data.id_cotizacion, {
+      await fetch(ulrEmpleado + '/' + data.id_empleado, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

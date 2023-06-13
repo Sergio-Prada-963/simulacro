@@ -34,7 +34,7 @@ CREATE TABLE `clientes` (
   `direccion` text NOT NULL,
   `correoCliente` text NOT NULL,
   `tipoCliente` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -51,7 +51,7 @@ INSERT INTO `clientes` (`id_cliente`, `nombreCliente`, `telefonoCliente`, `direc
 
 CREATE TABLE `cotizacion` (
   `id_cotizacion` int(11) NOT NULL,
-  `fecha` date NOT NULL DEFAULT current_timestamp(),
+  `fecha` date NOT NULL,
   `duracion` int(50) NOT NULL,
   `nombreCliente` int(80) NOT NULL,
   `telefonoCliente` int(80) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `cotizacion` (
   `horaAlquiler` text NOT NULL,
   `precioProducto` int(100) NOT NULL,
   `detalleCot` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `cotizacion`
@@ -83,9 +83,9 @@ CREATE TABLE `empleados` (
   `edad` int(11) NOT NULL,
   `telefono` bigint(80) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `fechaIngreso` date NOT NULL DEFAULT current_timestamp(),
+  `fechaIngreso` date NOT NULL,
   `cargo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -107,7 +107,7 @@ CREATE TABLE `productos` (
   `descripcion` text NOT NULL,
   `marca` text NOT NULL,
   `disponible` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -128,7 +128,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `contraseña` int(100) NOT NULL,
   `userName` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `users`
