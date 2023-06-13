@@ -3,13 +3,6 @@
     ini_set("display_errors", 1);
     ini_set("display_startup_errors", 1);
     error_reporting(E_ALL);
-    $i= 0;
-    require_once('../backend/config/cotizacion.php');
-    $data = new Cofig();
-    $all = $data-> obtainAll();
-    $idCliente = $data -> obtenerClienteId();
-    $idEmpleado = $data -> obtenerEmpleadoId();
-    $idProducto = $data -> obtenerProductoId();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Alquilartemis</title>
@@ -66,72 +59,8 @@
             <th scope="col" class="OPCIONES" >Opciones</th>
           </tr>
         </thead>
-        <tbody class="tbody">
-            <?php 
-                foreach($all as $key => $value){
-            ?>
-            <tr>
-                  <td><?= $value['id_cotizacion'] ?></td>
-                  <td><?= $value['fecha'] ?></td>
-                  <td><?= $value['nombreCliente'] ?></td>
-                  <td><?= $value['nombre'] ?></td>
-                  <td><?= $value['nombreProducto'] ?></td>
-                  <td><button type="button" name="detalles" class="BOTON<?= ++$i; ?> btn btn-primary" idCot="<?= $value['id_cotizacion'] ?>" >Opciones</button></td>
-                  <td class="OPCIONES<?= $i; ?> ">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetallesCotizacion<?= $i; ?>">Detalles</button>
-                    <a class="btn btn-danger" href="../backend/acciones/cotizacion/borrarCotizacion.php?id=<?= $value['id_cotizacion'] ?>&req=delete">BORRAR</a>
-                    <a class="btn btn-primary" href="../backend/acciones/cotizacion/editarCotizacion.php?id=<?=$value['id_cotizacion']?>">Editar</a>
-                  </td>
-                </tr>
-                <script>
-                    document.addEventListener("DOMContentLoaded", ()=>{
-                        const boton = document.querySelector(".BOTON<?= $i; ?>");
-                        const opciones = document.querySelector('.OPCIONES')
-                        const opciones2 = document.querySelector('.OPCIONES<?= $i; ?>')
-                        opciones.style.display = "none";
-                        opciones2.style.display = "none";
-                        let i = 1
-                        boton.addEventListener('click', (e)=>{
-                            ++i;
-                            if(i%2 ==0){opciones.style.display = "block";
-                                opciones2.style.display = "block";
-                            }else{opciones2.style.display = "none";
-                                opciones.style.display = "none";}
-                        })
-                    })
-                </script>
-
-                <div class="modal fade" id="DetallesCotizacion<?= $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> Cotizacion # <?= $value['id_cotizacion'] ?></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body" class="DETALLES" >
-                        <div class="encabezadoDetalles">
-                          <div><h4>Fecha <strong><?= $value['fecha'] ?></strong></h4></div> <div><h4>Empleado: <strong><?= $value['nombre'] ?></strong></h4></div> 
-                        </div>
-                        <div class="encabezadoDetalles">
-                          <div><h4>Cliente: <strong><?= $value['nombreCliente'] ?></strong></h4></div> <div><h4>Telefono: <strong><?= $value['telefonoCliente'] ?></strong></h4></div>
-                        </div>
-                        <div class="contenidoDetalles">
-                          <p>Duracion:  &#160&#160&#160 <?= $value['duracion'] ?> Dias</p>
-                          <p>Direccion:  &#160&#160&#160 <?= $value['direccion'] ?></p>
-                          <p>Tipo de Cliente:  &#160&#160&#160 <?= $value['tipoCliente'] ?></p>
-                          <p>Producto:  &#160&#160&#160 <?= $value['nombreProducto'] ?></p>
-                          <p>Hora Alquiler:  &#160&#160&#160 <?= $value['horaAlquiler'] ?></p>
-                          <p>Precio Producto:  &#160&#160&#160 <?= $value['costoDia'] ?></p>
-                          <p>Detalles:  &#160&#160&#160 <?= $value['detalleCot'] ?></p>
-                          <p>Total:  &#160&#160&#160 <?= $value['duracion']*$value['costoDia'] ?></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <?php  } ?>
+        <tbody class="tbody" id="tabla">
+            
         </tbody>
         </table>
     </section>
@@ -213,5 +142,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
+    <script src="../acciones/getCotizacion.js" type="module"></script>
+  </body>
 </html>
