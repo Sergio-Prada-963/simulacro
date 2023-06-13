@@ -11,12 +11,6 @@
         $config -> setTipoCliente($_POST['tipoCliente']);
 
         $config -> insertData();
-        echo $_POST['nombreCliente'];
-        echo $_POST['telefonoCliente'];
-        echo $_POST['direccion'];
-        echo $_POST['correoCliente'];
-        echo $_POST['tipoCliente'];
-        
         echo "<script>alert('datos guardados');document.location='../../../frontend/index.php'</script>";
     }
 ?>

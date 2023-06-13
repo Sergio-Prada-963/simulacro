@@ -10,12 +10,16 @@
         private $nombreProducto;
         private $costoDia;
         private $descripcion;
+        private $marca;
+        private $disponible;
 
-        public function __construct($id_productos=0, $nombreProducto='', $costoDia=0, $descripcion=''){
+        public function __construct($id_productos=0, $nombreProducto='', $costoDia=0, $descripcion='', $marca='', $disponible=0){
             $this->id_productos= $id_productos;
             $this->nombreProducto= $nombreProducto;
             $this->costoDia= $costoDia;
             $this->descripcion= $descripcion;
+            $this->marca= $marca;
+            $this->disponible= $disponible;
             parent::__construct();
         }
 
@@ -51,10 +55,26 @@
             return $this->descripcion;
         }
 
+        public function setMarca($marca) {
+            $this->marca = $marca;
+        }
+    
+        public function getMarca() {
+            return $this->marca;
+        }
+
+        public function setDisponible($disponible) {
+            $this->disponible = $disponible;
+        }
+    
+        public function getDisponible() {
+            return $this->disponible;
+        }
+
         public function insertData (){
             try {
-                $stm = $this->dbCnx->prepare("INSERT INTO productos(nombreProducto, costoDia, descripcion) VALUES(?, ?, ?) ");
-                $stm->execute([$this->nombreProducto, $this->costoDia, $this->descripcion]);
+                $stm = $this->dbCnx->prepare("INSERT INTO productos(nombreProducto, costoDia, descripcion, marca, disponible) VALUES(?, ?, ?, ?, ?) ");
+                $stm->execute([$this->nombreProducto, $this->costoDia, $this->descripcion, $this->marca, $this->disponible]);
             } catch (Exception $e) {
                 return $e->getMessage();
             }
@@ -91,8 +111,8 @@
         }
         public function update(){
             try {
-                $stm = $this->dbCnx->prepare("UPDATE productos SET nombreProducto=?, costoDia=?, descripcion=? WHERE id_productos=?");
-                $stm-> execute([$this->nombreProducto, $this->costoDia, $this->descripcion, $this->id_productos]);
+                $stm = $this->dbCnx->prepare("UPDATE productos SET nombreProducto=?, costoDia=?, descripcion=?, marca=?, disponible=? WHERE id_productos=?");
+                $stm-> execute([$this->nombreProducto, $this->costoDia, $this->descripcion, $this->marca, $this->disponible, $this->id_productos]);
             } catch (Exception $e) {
                 return $e->getMessage();
             }

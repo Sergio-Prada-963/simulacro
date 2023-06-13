@@ -9,12 +9,18 @@
         private $id_empleado;
         private $nombre;
         private $edad;
+        private $telefono;
+        private $email;
+        private $fechaIngreso;
         private $cargo;
 
-        public function __construct($id_empleado=0, $nombre='', $edad=0, $cargo=''){
+        public function __construct($id_empleado=0, $nombre='', $edad=0, $telefono=0, $email='', $fechaIngreso='', $cargo=''){
             $this->id_empleado= $id_empleado;
             $this->nombre= $nombre;
             $this->edad= $edad;
+            $this->telefono= $telefono;
+            $this->email= $email;
+            $this->fechaIngreso= $fechaIngreso;
             $this->cargo= $cargo;
             parent::__construct();
         }
@@ -43,6 +49,30 @@
             return $this->edad;
         }
 
+        public function setTelefono($telefono) {
+            $this->telefono = $telefono;
+        }
+    
+        public function getTelefono() {
+            return $this->telefono;
+        }
+
+        public function setEmail($email) {
+            $this->email = $email;
+        }
+    
+        public function getEmail() {
+            return $this->email;
+        }
+
+        public function setFechaIngreso($fechaIngreso) {
+            $this->fechaIngreso = $fechaIngreso;
+        }
+    
+        public function getFechaIngreso() {
+            return $this->fechaIngreso;
+        }
+
         public function setCargo($cargo) {
             $this->cargo = $cargo;
         }
@@ -53,8 +83,8 @@
 
         public function insertData (){
             try {
-                $stm = $this->dbCnx->prepare("INSERT INTO empleados(nombre, edad, cargo) VALUES(?, ?, ?) ");
-                $stm->execute([$this->nombre, $this->edad, $this->cargo]);
+                $stm = $this->dbCnx->prepare("INSERT INTO empleados(nombre, edad, telefono, email, fechaIngreso, cargo) VALUES(?, ?, ?, ?, ?, ?) ");
+                $stm->execute([$this->nombre, $this->edad, $this->telefono, $this->email, $this->fechaIngreso, $this->cargo]);
             } catch (Exception $e) {
                 return $e->getMessage();
             }
@@ -91,8 +121,8 @@
         }
         public function update(){
             try {
-                $stm = $this->dbCnx->prepare("UPDATE empleados SET nombre=?, edad=?, cargo=? WHERE id_empleado=?");
-                $stm-> execute([$this->nombre, $this->edad, $this->cargo, $this->id_empleado]);
+                $stm = $this->dbCnx->prepare("UPDATE empleados SET nombre=?, edad=?, telefono=?, email=?, fechaIngreso=?, cargo=? WHERE id_empleado=?");
+                $stm-> execute([$this->nombre, $this->edad, $this->telefono, $this->email, $this->fechaIngreso, $this->cargo, $this->id_empleado]);
             } catch (Exception $e) {
                 return $e->getMessage();
             }

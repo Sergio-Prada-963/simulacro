@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Alquilartemis</title>
@@ -51,8 +51,8 @@
                 Añadir Nuevo
             </button>
         </div>
-        <table class="table">
-        <thead>
+        <table class="table table-custom">
+        <thead class="text-center">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre Cliente</th>
@@ -60,10 +60,10 @@
             <th scope="col">Direccion</th>
             <th scope="col">Correo</th>
             <th scope="col">Tipo de Cliente</th>
-            <th scope="col">Opciones</th>
+            <th scope="col" class="row col-12">Opciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="col text-center">
             <?php 
                 foreach($all as $key => $value){
             ?>
@@ -74,7 +74,7 @@
               <td><?= $value['direccion'] ?></td>
               <td><?= $value['correoCliente'] ?></td>
               <td><?= $value['tipoCliente'] ?></td>
-              <td class="row justify-content-center gap-2 ">
+              <td class="row gap-2 col-12">
                 <a class="btn btn-danger" href="../backend/acciones/clientes/borrarCliente.php?id=<?= $value['id_cliente'] ?>&req=delete">BORRAR</a>
                 <a class="btn btn-primary" href="../backend/acciones/clientes/editarClientes.php?id=<?=$value['id_cliente']?>">Editar</a>
               </td>
@@ -84,8 +84,6 @@
         </tbody>
         </table>
     </section>
-
-    <!-- Button trigger modal -->
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -122,10 +120,10 @@
                 <input type="submit" class="btn btn-primary" name="guardar" value="Guardar">
               </div>
             </form> 
+          </div>
         </div>
       </div>
     </div>
-
 
 
 

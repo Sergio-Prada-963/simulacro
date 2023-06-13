@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+    height: 100vh!important;
+    background-image: url(fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+}
+
+.cajaLogin{
+    width: 35%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 3px black solid;
+    border-radius: 2rem;
+    background-color: rgba(128, 128, 128, 0.322);
+    backdrop-filter: blur(3px);
+    color: #ffffffbf;
+    display: grid;
+    place-items: center;
+}
+.welcome h2{
+    font-size: 3.5rem;
+    text-align: center;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: 1rem;
+}
+.login input{
+    border-radius: 0.5rem;
+    background-color: rgba(128, 128, 128, 0.426);
+    border: 1px rgb(96, 95, 95) solid;
+    padding: 0.6rem;
+    font-size: 1.3rem;
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.botones button{
+    padding: 0.5rem 2.5rem 0.5rem 2.5rem ;
+}
+
+.modal-open .modal-content {
+    margin-top: 10rem;
+    backdrop-filter: blur(2px);
+    font-size: 1.5rem;
+}
+.form-label {
+    color: white;
+}
